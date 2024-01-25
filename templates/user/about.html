@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}
+About Us
+{% endblock %}
+{% block x %}
+<div class="fs-2 text-center">About
+    <b class="text-mycolor">Us <i class="fa-solid fa-circle-info px-2"></i></b>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <hr>
+        <div class="text-center mb-4">
+            News India is a news site dedicated to deliver the best and most accurate news in India
+        </div>
+        <div class="row">
+            <div class="col-sm-7"><img class="img-fluid rounded float-left" src="{% static 'images/img1.jpg' %}"></div>
+            <div class="col-sm-5 float-left">
+                <h3>Our work is great</h3>
+                <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+        </div>
+        <div class="fs-2 text-center mt-2">Our mission</div>
+        <p>News India is the best news site in the world because it is made by me!
+            Newspaper cannot be defined by the second word paper, it has to be defined by the first word news. It
+            provides detailed information about the issues taking place all over the world.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+            leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+            with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software
+        </p>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+{% endblock %}

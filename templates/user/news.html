@@ -1,0 +1,90 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}
+News
+{% endblock %}
+{% block x %}
+<div class="fs-2 text-center mb-2">Latest
+    <b class="text-mycolor">News <i class="fa-solid fa-newspaper"></i></b>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item fs-4 bg-mycol text-white text-center fw-bold">
+                News Category <i class="fa-solid fa-newspaper text-danger text-light"></i>
+            </li>
+            {% for x in cat %}
+            <a href="/user/news?catid={{x.id}}" style="text-decoration:none">
+            <li class="list-group-item">
+                <div class="card w-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img alt="..." class="img-fluid rounded-start" src="/{{x.cpic}}"
+                                 style="min-height: 60px">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{x.category}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        {% for x in news %}
+        <div class="card mb-2">
+            <div class="row g-0">
+                <div class="col-md-4 pt-3 ps-2">
+                    <img alt="..." class="img-fluid rounded" src="/{{x.npic}}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.ntitle}}</h5>
+                        <b>{{x.nhead}}</b> | <span>{{x.category}}</span>
+                        <br>
+                        <br>
+                        <a href="/user/details?n={{x.id}}" class="btn btn-sm btn-warning">
+                            <i class="fa-solid fa-circle-info px-2"></i> View More
+                        </a>
+                        <span class="btn btn-outline-dark btn-sm ">{{x.category}}</span>
+                        <span class="btn btn-outline-dark btn-sm ">{{x.ncity}}</span>
+                        <br>
+                        <b><i class="fa-regular fa-calendar mt-4"></i> Date:<span class="text-muted"> {{x.ndate}}</span></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col-sm-3">
+        <ul class="list-group">
+            <li class="list-group-item fs-4 bg-mycol text-white text-center fw-bold">
+                City <i class="fa-solid fa-city text-danger text-light"></i>
+            </li>
+            {% for y in ct %}
+            <a href="/user/news?ctid={{y.id}}" style="text-decoration:none">
+            <li class="list-group-item">
+                <div class="card w-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img alt="..." class="img-fluid rounded-start" src="/{{y.cpic}}"
+                                 style="min-height: 60px">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{y.ncity}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

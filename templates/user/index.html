@@ -1,0 +1,191 @@
+{%extends 'base.html'%}
+{% load static %}
+{% block title %}
+News INDIA
+{% endblock %}
+{% block x %}
+<div class="row slider">
+    <div class="col-sm-7 s1">
+        <div class="carousel slide" data-bs-ride="false" id="carouselExampleCaptions">
+            <div class="carousel-indicators">
+                <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0"
+                        data-bs-target="#carouselExampleCaptions" type="button"></button>
+                <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleCaptions"
+                        type="button"></button>
+                <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleCaptions"
+                        type="button"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img alt="..." class="d-block w-100 imagehover" src="{%static 'images/n2.jpg'%}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5 class="">The Punjab government made 9,000 contractual employees permanent due to which the
+                            process of giving out salaries to state government employees got delayed by 3-4 days</h5>
+                        <p>All govt employees to get salary today, no shortage of money with AAP govt: Punjab finance
+                            minister</p>
+                    </div>
+                </div>
+                {% for x in data %}
+                <div class="carousel-item">
+
+                    <img alt="..." class="d-block w-100 imagehover" src="/{{x.spic}}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>{{x.shead}}</h5>
+                        <p>{{x.ssubject}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions"
+                    type="button">
+                <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions"
+                    type="button">
+                <span aria-hidden="true" class="carousel-control-next-icon"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="col-sm-5 s2" style="height:425px;">
+        <!--Card start-->
+        <marquee behavior="alternate" direction="up" height="425px">
+            {% for x in ndata %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0 ps-2">
+                    <div class="col-md-4" style="margin-top: auto; margin-bottom: auto">
+                        <img alt="..." class="img-fluid rounded imagehover" src="/{{x.npic}}">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.ntitle}}</h5>
+                            <p class="card-text"><small class="text-muted"> <i class="fa-solid fa-calendar"></i> Date:
+                                {{x.ndate}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </marquee>
+        <!--Card end-->
+    </div>
+</div>
+<div class="row ncategory mt-2">
+    <div class="row mt-3">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="row">
+                {% for x in data2 %}
+                <div class="col-sm-2">
+                    <!--start card-->
+                    <div class="card">
+                        <a href="/user/viewnews/{{x.category}}" style="text-decoration:none; color:black">
+                            <img alt="..." class="card-img-top fluid imagehover" src="/{{x.cpic}}"/>
+                            <div class="card-body">
+                                <p class="card-title fs-5 text-center">{{x.category}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!--endcard-->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+<hr>
+<div class="fs-2 text-center mb-4">Our
+    <b class="text-mycolor">Latest News <i class="fa-solid fa-newspaper"></i></b>
+</div>
+<div class="row inews m-1">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="row">
+            {% for x in ndata %}
+            <div class="col-sm-4 card p-2">
+                <img class="img-card-top img-fluid rounded imagehover" src="/{{x.npic}}">
+                <div class="card-body">
+                    <h5>{{x.category}}</h5>
+                    <b>{{x.ntitle}}</b>
+                    <br>
+                    <br>
+                    <i>{{x.nhead}}</i>
+                    <br>
+                    <br>
+                    <div>
+                        <a class="btn btn-sm btn-warning" href="/user/details?n={{x.id}}">View More</a>
+                        <a class="btn btn-sm btn-outline-dark" href="/user/details?n={{x.ncity}}">{{x.ncity}}</a>
+                        <br>
+                        <i class="fa-regular fa-calendar mt-4 text-right"></i> Date: {{x.ndate}}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+<hr>
+<div class="fs-2 text-center mb-3">Latest
+    <b class="text-mycolor">Video News <i class="fa-solid fa-video"></i></b>
+</div>
+<div class="row vnews">
+    {% for i in vdata %}
+    <div class="col-sm-6">
+        <!-- START CARD -->
+        <div class="card mb-3 p-2">
+            <div class="row g-0">
+                <div class="col-md-5" style="margin-top: auto; margin-bottom: auto;">
+                    <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen class="w-100 rounded" frameborder="0"
+                            src="{{i.vlink}}"
+                            title="YouTube video player"></iframe>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.vcategory}}</h5>
+                        <b>{{i.vhead}}</b>
+                        <br>
+                        <a class="btn btn-sm btn-warning mt-2" href="/user/vdetail?vid={{i.id}}">View More</a>
+                        <a class="btn btn-sm btn-outline-dark mt-2" href="#">{{i.vcity}}</a>
+                        <p class="card-text"><small class="text-muted"><i class="fa-regular fa-calendar mt-3"></i>
+                            {{i.vdate}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CARD -->
+    </div>
+    {% endfor %}
+</div>
+<hr>
+<div class="row city">
+    <div class="fs-2 text-center mb-2">City
+        <b class="text-mycolor">News <i class="fa-solid fa-city"></i></b>
+    </div>
+    <div class="row my-2">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
+            <div class="row">
+                {% for x in city %}
+                <div class="col-sm-2">
+                    <!--start card-->
+                    <div class="card">
+                        <a href="/user/viewnews?cid={{x.id}}" style="text-decoration:none; color:black">
+                            <img alt="..." class="card-img-top fluid imagehover" src="/{{x.cpic}}"/>
+                            <div class="card-body">
+                                <p class="card-title fs-5 text-center">{{x.ncity}}</p>
+                            </div>
+                        </a>
+                    </div>
+                    <!--endcard-->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
+</div>
+{% endblock %}

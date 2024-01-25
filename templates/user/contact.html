@@ -1,0 +1,79 @@
+{%extends 'base.html'%}
+{% block x %}
+<div class="fs-2 text-center mb-2">Contact
+    <b class="text-mycolor">Us <i class="fa-solid fa-address-book px-2"></i></b>
+</div>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5 frm">
+        {% if msg %}
+        <div class="alert alert-success">
+            Your data is saved successfully
+        </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="input-group m-2">
+                <i class="input-group-text bg-warning">
+                    <i class="fa-solid fa-user"></i>
+                </i>
+                <input class="input-group form-control" required name="name" placeholder="Name" type="text">
+            </div>
+            <div class="input-group m-2">
+                <i class="input-group-text bg-warning">
+                    <i class="fa-solid fa-phone"></i>
+                </i>
+                <input class="input-group form-control" required name="mob" placeholder="Mobile no." type="number">
+            </div>
+            <div class="input-group m-2">
+                <i class="input-group-text bg-warning">
+                    <i class="fa-solid fa-envelope"></i>
+                </i>
+                <input class="input-group form-control" required name="email" placeholder="Email" type="email">
+            </div>
+            <div class="input-group m-2 mb-4">
+                <i class="input-group-text bg-warning">
+                    <i class="fa-solid fa-message"></i>
+                </i>
+                <textarea class="form-control" name="msg" required placeholder="Enter your message" type="text"></textarea>
+            </div>
+            <input class="form-control bg-warning m-2 mb-4" type="Submit" value="Submit">
+        </form>
+    </div>
+    <div class="col-sm-5">
+        <div class="card m-2 p-4 bg-white">
+            <b class="text-mycolor fs-3 text-center">Contact Info</b>
+            <hr>
+            <b class="text-mycolor fs-5 mb-2">Office Address:</b>
+            <p class="ms-4">
+                Plot No-44, Behind H.P Petrol Pump,<br>
+                Tedhi Pulia Ring Rd, Sector 5,<br>
+                Vikas Nagar, Lucknow <br>
+                Uttar Pradesh 226022
+            </p>
+            <b class="text-mycolor fs-5 mb-2">Call us:</b>
+            <p class="ms-4">
+                <a href="tel:+91 7007237006 text-dark" style="text-decoration: none;" class="text-dark">+91 7007237006</a>
+                <br>
+                <a href="tel:+91 8052978684 text-dark" style="text-decoration: none;" class="text-dark">+91 8052978684</a>
+            </p>
+            <b class="text-mycolor fs-5 mb-2">Mail us:</b>
+            <a href="mailto:techpilelko@gmail.com" class="ms-4 text-black" style="text-decoration: none;">techpilelko@gmail.com</a>
+            <a href="mailto:hr@techpile.in" class="ms-4 text-black" style="text-decoration: none;">hr@techpile.in</a>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+    <div class="fs-3 text-center mb-2 mt-2">
+        Find us on <b class="text-mycolor">Google Maps</b>
+    </div>
+
+    <iframe allowfullscreen=""
+            frameborder="0" height="300px"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.1588441496056!2d80.96423161504458!3d26.898453483133807!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39995785d5f7f1a5%3A0xffa47f1efe103f0d!2sTechpile+Technology+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1539247368696"
+            style="border:0" width="100%">
+    </iframe>
+</div>
+{% endblock %}
+{% block title %}
+Contact Us
+{% endblock %}

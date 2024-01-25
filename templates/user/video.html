@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{% block title %}
+Video Gallery
+{% endblock %}
+{% block x %}
+<style>
+    .txt {
+        height:55px;
+    }
+</style>
+<div class="fs-2 text-center mb-2">Video
+    <b class="text-mycolor">Gallery <i class="fa-solid fa-video"></i></b>
+</div>
+<div class="row mb-4">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="row">
+            <form method="get">
+            <div class="input-group">
+                <input type="text" class="form-control txt" name="search">
+                <input type="submit" class="btn btn-warning" value="Search">
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
+<div class="row">
+    {% for i in data %}
+    <div class="col-sm-6">
+        <!-- START CARD -->
+        <div class="card mb-3 p-2">
+            <div class="row g-0">
+                <div class="col-md-5" style="margin-top: auto; margin-bottom: auto;">
+                    <iframe class="w-100 rounded" src="{{i.vlink}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-7">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.vcategory}}</h5>
+                        <b>{{i.vhead}}</b>
+                        <br>
+                        <a href="/user/vdetail?vid={{i.id}}" class="btn btn-sm btn-warning mt-2">View More</a>
+                        <a href="#" class="btn btn-sm btn-outline-dark mt-2">{{i.vcity}}</a>
+                        <p class="card-text"><small class="text-muted"><i class="fa-regular fa-calendar mt-3"></i> {{i.vdate}}</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END CARD -->
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

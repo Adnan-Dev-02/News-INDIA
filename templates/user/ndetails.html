@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{% block title %}
+News Details
+{% endblock %}
+{% block x %}
+<div class="fs-2 text-center mb-2">News
+    <b class="text-mycolor">Details <i class="fa-solid fa-newspaper"></i></b>
+</div>
+<div class="row">
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            {% for x in ndata %}
+            <div class="card">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img alt="..." class="img-fluid rounded-start" src="/{{x.npic}}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{x.ntitle}}</h5>
+                        <b>{{x.nhead}}</b> | <span>{{x.category}}</span>
+                        <br>
+                        <p class="card-title">{{x.ndes}}</p>
+                        <br>
+                        <span class="btn btn-outline-danger btn-sm ">{{x.category}}</span>
+                        <span class="btn btn-outline-danger btn-sm ">{{x.ncity}}</span>
+                        <br>
+                        <b><i class="fa-regular fa-calendar mt-4"></i> Date:<span class="text-muted"> {{x.ndate}}</span></b>
+                    </div>
+                </div>
+            </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+{% endblock %}
